@@ -84,7 +84,7 @@ app.patch('/api/v1/tours/:id', (req, res) => {
         data: {
             tour: '<Updated tour here...>'
         }
-    })
+    });
 
 
 });
