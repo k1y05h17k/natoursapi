@@ -19,6 +19,7 @@ app.use((req, res, next) =>{
     next();
 })
 
+// 2) ROUTE HANDLER
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`));
 
 const getAllTour = (req, res) => {
@@ -113,7 +114,7 @@ const deleteTour = (req, res) => {
 // app.patch('/api/v1/tours/:id', updateTour);
 // app.delete('/api/v1/tours/:id', deleteTour);
 
-// ROUTES
+// 3) ROUTES
 
 app.route('/api/v1/tours')
 .get(getAllTour)
@@ -123,7 +124,7 @@ app.route('/api/v1/tours/:id')
 .patch(updateTour)
 .delete(deleteTour);
 
-// START SERVER
+// 4) START SERVER
 
 const port = 3000;
 app.listen(port, () => {
