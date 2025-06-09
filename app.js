@@ -1,8 +1,12 @@
 const fs = require('fs');
 const express = require('express');
-const { create } = require('domain');
+const morgan = require('morgan');
 
 const app = express();
+
+// 1) MIDDLEWARES
+app.use(morgan('dev'));
+
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -109,6 +113,8 @@ const deleteTour = (req, res) => {
 // app.patch('/api/v1/tours/:id', updateTour);
 // app.delete('/api/v1/tours/:id', deleteTour);
 
+// ROUTES
+
 app.route('/api/v1/tours')
 .get(getAllTour)
 .post(createTour);
@@ -117,6 +123,7 @@ app.route('/api/v1/tours/:id')
 .patch(updateTour)
 .delete(deleteTour);
 
+// START SERVER
 
 const port = 3000;
 app.listen(port, () => {
