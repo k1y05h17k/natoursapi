@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config({path:'./config.env'});
+dotenv.config({ path: './config.env' });
 
 const app = require('./app');
 
@@ -8,7 +8,8 @@ const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSW
 
 mongoose
     .connect(DB, {
-
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
     })
     .then(() => console.log('DB connection successful!'));
 
